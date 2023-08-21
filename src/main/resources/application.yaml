@@ -1,0 +1,32 @@
+server:
+  port: 7865
+
+spring:
+  application:
+    name: spring-boot-keycloak-integration
+
+  security:
+    oauth2:
+      client:
+        provider:
+          external:
+            issuer-uri: http://localhost:8080/realms/external
+
+        registration:
+          external:
+            provider: external
+            client-name: external-client
+            client-id: external-client
+            client-secret: dpzEOCjR24SpFVlzmHcvf28tBK9KJZFn
+            scope: openid,offline_access,profile
+            authorization-grant-type: authorization_code
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+  pattern:
+    console: "%d{dd-MM-yyyy HH:mm:ss} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+
+#https://developers.redhat.com/articles/2023/07/24/how-integrate-spring-boot-3-spring-security-and-keycloak
